@@ -1,0 +1,40 @@
+package product.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import product.model.ProductBean;
+import product.model.ProductDao;
+
+@Controller
+public class ProductDetailController {
+
+	@Autowired
+	ProductDao productDao; 
+
+	private final String command = "/detail.prd";
+	private final String getPage = "productDetailView";
+
+	@RequestMapping(value = command)
+	public String detailView(
+			@RequestParam(value =  "num", required = true) int num,
+			@RequestParam("pageNumber") int pageNumber,
+			@RequestParam(value="whatColumn",required=false) String whatColumn,
+			@RequestParam(value="keyword",required=false) String keyword,
+			Model model) {
+
+		
+		
+		System.out.println();   //jsp로 넘어갈땐 속성으로 안넘겨줘도 param으로 자동으로 넘어감!! model속성설정 할필요x
+		ProductBean pb =  productDao.detailViewByNum(num);
+		model.addAttribute("product", pb);
+		model.addAttribute("pageNumber", pageNumber);
+		model.addAttribute("whatColumn", whatColumn);
+		model.addAttribute("keyword", keyword);
+
+		return getPage;
+	}
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	
+	<typeAliases>
+		<typeAlias alias="MyProduct" type="product.model.ProductBean"/>
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="mybatis/product.xml"/>
+		<mapper resource="mybatis/member.xml"/>
+		<mapper resource="mybatis/order.xml"/>
+		<mapper resource ="mybatis/orderdetail.xml"/>
+		<mapper resource ="mybatis/composite.xml"/>
+	</mappers>
+</configuration>  
+
+
+
+<!--mapper파일의 위치 :mapper 파일이 여러개 있으면 여기에다가 써줘야함 
+	root-context.xml 은 하나만 쓸수 있음!
+		<typeAliases>를 먼저 써야함! 아님 에러남!
+	
+-->

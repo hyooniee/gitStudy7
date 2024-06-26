@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="order.model.Order">
+	<insert id="insertData">
+		insert into orders values(seqoid.nextval, #{id}, sysdate)
+	</insert>
+	
+	<select id="getMaxOrdersOid" resultType="int">
+		select max(oid) from orders
+	</select>
+
+
+
+
+
+</mapper>
+
+<!-- order.xml -->
